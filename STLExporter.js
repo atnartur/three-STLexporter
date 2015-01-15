@@ -1,3 +1,10 @@
+/**
+ * Based on https://github.com/mrdoob/three.js/blob/a72347515fa34e892f7a9bfa66a34fdc0df55954/examples/js/exporters/STLExporter.js
+ * Tested on r68 and r70
+ * @author kjlubick / https://github.com/kjlubick
+ * @author kovacsv / http://kovacsv.hu/
+ * @author mrdoob / http://mrdoob.com/
+ */
 THREE.STLExporter = function () {};
 
 THREE.STLExporter.prototype = {
@@ -31,7 +38,6 @@ THREE.STLExporter.prototype = {
 						normalMatrixWorld.getNormalMatrix( matrixWorld );
 
 						for ( var i = 0, l = faces.length; i < l; i ++ ) {
-
 							var face = faces[ i ];
 
 							vector.copy( face.normal ).applyMatrix3( normalMatrixWorld ).normalize();
@@ -84,19 +90,13 @@ THREE.STLExporter.prototype = {
 										.applyMatrix4(skinMatrices[k]);
 										finalVector.add(tempVector);
 									}
-
 									output += '\t\t\tvertex ' + finalVector.x + ' ' + finalVector.y + ' ' + finalVector.z + '\n';
 								}
-
 							}
-
 							output += '\t\tendloop\n';
 							output += '\tendfacet\n';
-
 						}
-
 					}
-
 				}
 
 			} );
@@ -104,9 +104,16 @@ THREE.STLExporter.prototype = {
 			output += 'endsolid exported\n';
 
 			return output;
-
 		};
-
 	}() )
-
 };
+
+// Use FileSaver.js 'saveAs' function to save the string
+function saveSTL( scene, name ){  
+  var exporter = new THREE.STLExporter();
+  var stlString = exporter.parse( scene );
+  
+  var blob = new Blob([stlString], {type: 'text/plain'});
+  
+  saveAs(blob, name + '.stl');
+}
