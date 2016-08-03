@@ -1,0 +1,39 @@
+{
+  "name": "three-stlexporter",
+  "version": "1.0.0",
+  "description": "Exports a THREE.js scene mesh to STL, making it suitable for 3d printing",
+  "main": "STLExporter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/atnartur/three-STLexporter.git"
+  },
+  "keywords": [
+    "three",
+    "three.js",
+    "stl",
+    "stl",
+    "export",
+    "3d"
+  ],
+  "author": "mrdoob (http://mrdoob.com/)",
+  "contributors": [
+    "kovacsv (http://kovacsv.hu/)",
+    "kjlubick (https://github.com/kjlubick)",
+    "jcarletto (https://github.com/jcarletto27)",
+    "atnartur (http://atnartur.ru)"
+  ],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/atnartur/three-STLexporter/blob/master/LICENSE"
+  },
+  "bugs": {
+    "url": "https://github.com/atnartur/three-STLexporter/issues"
+  },
+  "homepage": "https://github.com/atnartur/three-STLexporter#readme",
+  "dependencies": {
+    "three": "^0.79.0"
+  }
+}
