@@ -2,7 +2,9 @@
 
 Exports a THREE.js scene mesh to STL, making it suitable for 3d printing.
 
-You can find example of usage in **example.js**
+This version of STL Exporter tested on THREE.js r68, r70 and r79 and include support of BufferGeometry and morthTargers and common.js, AND and ES6 modules.
+
+You can find example of usage in [example.js](https://github.com/atnartur/three-STLexporter/blob/master/example.js).
 
 ## Authors 
 
