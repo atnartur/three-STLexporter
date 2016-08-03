@@ -7,8 +7,8 @@
  * @author atnartur / http://atnartur.ru
  */
 
-if(typeof THREE == 'undefined')
-	var THREE = {}
+if(typeof THREE == 'undefined' && typeof require != 'undefined')
+	var THREE = require('three')
 
 THREE.STLExporter = function () {};
 
@@ -94,8 +94,35 @@ THREE.STLExporter.prototype = {
 											skeleton.bones[ boneIndices[2] ].matrixWorld,
 											skeleton.bones[ boneIndices[3] ].matrixWorld
 										];
+
+										//this checks to see if the mesh has any morphTargets - jc
+										if (geometry.morphTargets !== 'undefined') {										
+											var morphMatricesX = [];
+											var morphMatricesY = [];
+											var morphMatricesZ = [];
+											var morphMatricesInfluence = [];
+
+											for (var mt = 0; mt < geometry.morphTargets.length; mt++) {
+												//collect the needed vertex info - jc
+												morphMatricesX[mt] = geometry.morphTargets[mt].vertices[vertexIndex].x;
+												morphMatricesY[mt] = geometry.morphTargets[mt].vertices[vertexIndex].y;
+												morphMatricesZ[mt] = geometry.morphTargets[mt].vertices[vertexIndex].z;
+												morphMatricesInfluence[mt] = morphTargetInfluences[mt];
+											}
+										}
 										
 										var finalVector = new THREE.Vector4();
+
+										if (mesh.geometry.morphTargets !== 'undefined') {
+
+											var morphVector = new THREE.Vector4(vector.x, vector.y, vector.z);
+
+											for (var mt = 0; mt < geometry.morphTargets.length; mt++) {
+												//not pretty, but it gets the job done - jc
+												morphVector.lerp(new THREE.Vector4(morphMatricesX[mt], morphMatricesY[mt], morphMatricesZ[mt], 1), morphMatricesInfluence[mt]);
+											}
+
+										}
 
 										for (var k = 0; k < 4; k++) {
 
