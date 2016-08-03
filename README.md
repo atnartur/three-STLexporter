@@ -6,6 +6,10 @@ This version of STL Exporter tested on THREE.js r68, r70 and r79 and include sup
 
 You can find example of usage in [example.js](https://github.com/atnartur/three-STLexporter/blob/master/example.js).
 
+## Installation
+
+`npm install three-stlexporter --save`
+
 ## Authors 
 
 This version of STLExporter based on:
