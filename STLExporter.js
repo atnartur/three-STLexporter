@@ -5,6 +5,7 @@
  * @author kovacsv / http://kovacsv.hu/
  * @author mrdoob / http://mrdoob.com/
  */
+
 THREE.STLExporter = function () {};
 
 THREE.STLExporter.prototype = {
@@ -105,15 +106,5 @@ THREE.STLExporter.prototype = {
 
 			return output;
 		};
-	}() )
+	}())
 };
-
-// Use FileSaver.js 'saveAs' function to save the string
-function saveSTL( scene, name ){  
-  var exporter = new THREE.STLExporter();
-  var stlString = exporter.parse( scene );
-  
-  var blob = new Blob([stlString], {type: 'text/plain'});
-  
-  saveAs(blob, name + '.stl');
-}
